@@ -2,6 +2,7 @@
 const form = document.getElementById("studentForm");
 const studentTable = document.getElementById("studentTable");
 const searchInput = document.getElementById("searchInput");
+const statusFilter = document.getElementById("statusFilter");
 const formMessage = document.getElementById("formMessage");
 
 let students = JSON.parse(localStorage.getItem("students")) || [];
@@ -41,10 +42,19 @@ function updateStatistics() {
 function renderStudents() {
     const search = searchInput.value.toLowerCase().trim();
 
-    const filtered = students.filter(student =>
+    const filtered = students.filter(student => {
+    const matchesSearch =
         student.name.toLowerCase().includes(search) ||
-        student.studentId.toLowerCase().includes(search)
-    );
+        student.studentId.toLowerCase().includes(search);
+
+    const status = statusFilter.value;
+    const matchesStatus =
+        status === "all" ||
+        (status === "pass" && student.average >= 50) ||
+        (status === "fail" && student.average < 50);
+
+    return matchesSearch && matchesStatus;
+});
 
     studentTable.innerHTML = "";
 
@@ -200,3 +210,4 @@ function showMessage(message, isError = false) {
 searchInput.addEventListener("input", renderStudents);
 
 renderStudents();
+statusFilter.addEventListener("change", renderStudents);

@@ -101,10 +101,22 @@
                 <div>
                     <h2>Student Records</h2>
                     <p>View and manage academic records</p>
-                </div>
-                <input type="search" id="searchInput"
-                       placeholder="Search students...">
-            </div>
+                
+
+                <div class="table-tools">
+    <input type="search" id="searchInput"
+           placeholder="Search students...">
+
+    <select id="statusFilter">
+        <option value="all">All Students</option>
+        <option value="pass">Passed</option>
+        <option value="fail">Failed</option>
+    </select>
+</div>
+
+
+
+              
 
             <div class="table-wrapper">
                 <table>
