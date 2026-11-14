@@ -18,6 +18,7 @@ The system helps administrators manage student information, monitor academic per
 - Display class statistics.
 - Save records using Local Storage.
 - Responsive user interface.
+- CSV export
 
 ## Technologies
 - HTML5
@@ -55,10 +56,10 @@ using Local Storage.
 - The application does not include user authentication.
 
 ## Contributor
-- Mustafa Al-Tayeb
-- Ahmed Alfrzdag
+- Mustafa Al-Tayeb - ID =202011236916 
+- Ahmed Alfrzdag    - ID =202021023554
 ## Future Improvements
 - User authentication.
 - Database integration.
 - PDF report generation.
-- Export student records.
+
