@@ -311,3 +311,6 @@ footer {
     border-radius: 7px;
     background: white;
 }
+#exportBtn {
+    white-space: nowrap;
+}

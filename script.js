@@ -211,3 +211,48 @@ searchInput.addEventListener("input", renderStudents);
 
 renderStudents();
 statusFilter.addEventListener("change", renderStudents);
+function exportStudents() {
+    if (students.length === 0) {
+        alert("There are no student records to export.");
+        return;
+    }
+
+    const headers = [
+        "Name", "Student ID", "Math",
+        "English", "Computer", "Average",
+        "Grade", "Status"
+    ];
+
+    const rows = students.map(student => [
+        student.name,
+        student.studentId,
+        student.math,
+        student.english,
+        student.computer,
+        student.average.toFixed(2),
+        student.grade,
+        student.average >= 50 ? "PASS" : "FAIL"
+    ]);
+
+    const csv = [headers, ...rows]
+        .map(row => row.map(value =>
+            `"${String(value).replace(/"/g, '""')}"`
+        ).join(","))
+        .join("\n");
+
+    const blob = new Blob(["\uFEFF" + csv], {
+        type: "text/csv;charset=utf-8;"
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "student-records.csv";
+    link.click();
+
+    URL.revokeObjectURL(url);
+}
+
+document.getElementById("exportBtn")
+    .addEventListener("click", exportStudents);
