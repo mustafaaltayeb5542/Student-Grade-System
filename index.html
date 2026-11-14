@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">SGMS</div>
+        <p class="side-label">MAIN MENU</p>
+        <a class="active" href="#dashboard">Dashboard</a>
+        <a href="#students">Students</a>
+        <a href="#add-student">Add Student</a>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+        <header class="topbar">
+            <div>
+                <h1>Student Management</h1>
+                <p>Manage student records and academic performance</p>
+            </div>
+            <span class="admin">Administrator</span>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>Total Students</span>
+                <h2 id="totalStudents">0</h2>
+            </div>
+            <div class="stat-card">
+                <span>Passed Students</span>
+                <h2 id="passedStudents">0</h2>
+            </div>
+            <div class="stat-card">
+                <span>Failed Students</span>
+                <h2 id="failedStudents">0</h2>
+            </div>
+            <div class="stat-card">
+                <span>Class Average</span>
+                <h2 id="classAverage">0%</h2>
+            </div>
+        </section>
+
+        <section class="panel" id="add-student">
+            <div class="panel-heading">
+                <div>
+                    <h2>Add New Student</h2>
+                    <p>Enter student information and subject grades</p>
+                </div>
+            </div>
+
+            <form id="studentForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="studentName">Student Name</label>
+                        <input id="studentName" type="text"
+                               placeholder="Enter full name" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="studentId">Student ID</label>
+                        <input id="studentId" type="text"
+                               placeholder="Enter student ID" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="math">Mathematics</label>
+                        <input id="math" type="number"
+                               min="0" max="100" step="0.01"
+                               placeholder="0 - 100" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="english">English</label>
+                        <input id="english" type="number"
+                               min="0" max="100" step="0.01"
+                               placeholder="0 - 100" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="computer">Computer Science</label>
+                        <input id="computer" type="number"
+                               min="0" max="100" step="0.01"
+                               placeholder="0 - 100" required>
+                    </div>
+                </div>
+
+                <button class="primary-btn" type="submit">
+                    + Add Student
+                </button>
+                <p id="formMessage" class="message" role="status"></p>
+            </form>
+        </section>
+
+        <section class="panel" id="students">
+            <div class="panel-heading">
+                <div>
+                    <h2>Student Records</h2>
+                    <p>View and manage academic records</p>
+                </div>
+                <input type="search" id="searchInput"
+                       placeholder="Search students...">
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>ID</th>
+                            <th>Math</th>
+                            <th>English</th>
+                            <th>Computer</th>
+                            <th>Average</th>
+                            <th>Grade</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTable">
+                    </tbody>
+                </table>
+            </div>
+            <p id="emptyMessage">No student records found.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
